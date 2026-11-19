@@ -1,0 +1,70 @@
+/* ==========================================================================
+   BankEase - Responsive Media Queries
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        flex-direction: row;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+    }
+
+    .sidebar-header, .sidebar-footer {
+        display: none;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 6px;
+        overflow-x: auto;
+    }
+
+    .nav-link {
+        flex-direction: column;
+        gap: 4px;
+        font-size: 10px;
+        padding: 6px 10px;
+        border-radius: var(--radius-sm);
+    }
+
+    .nav-link span {
+        white-space: nowrap;
+    }
+
+    .main-wrapper {
+        margin-bottom: 64px;
+    }
+
+    .top-navbar {
+        padding: 0 16px;
+    }
+
+    .content-body {
+        padding: 16px;
+    }
+
+    .balance-amount {
+        font-size: 28px;
+    }
+
+    .auth-card {
+        padding: 24px;
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In – BankEase Net Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">B</div>
+                <h1 class="auth-title">Welcome to BankEase</h1>
+                <p class="auth-sub">Secure Internet Banking Portal</p>
+            </div>
+
+            <div id="login-error" class="auth-alert hidden"></div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="username">Username or Email</label>
+                    <input type="text" id="username" class="form-control" placeholder="e.g. customer1 or officer1" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </form>
+
+            <div class="auth-quick-creds">
+                <strong>Demo Credentials:</strong><br>
+                • Customer: <code>customer1</code> / <code>Customer@1234</code><br>
+                • Bank Officer: <code>officer1</code> / <code>Admin@1234</code>
+            </div>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="register.html">Open an Account</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

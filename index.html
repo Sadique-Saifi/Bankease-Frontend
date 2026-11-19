@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankEase – NextGen Net Banking Application</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .hero-section {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at top center, #1e3a8a, #0f172a);
+            color: white;
+            padding: 40px 20px;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #93c5fd;
+        }
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            padding: 80px 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .landing-header {
+            background: #0f172a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="landing-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="logo-badge">B</div>
+            <h2 style="font-size: 20px; font-weight: 700;">BankEase</h2>
+        </div>
+        <div>
+            <a href="login.html" class="btn btn-secondary" style="margin-right: 12px;">Sign In</a>
+            <a href="register.html" class="btn btn-primary">Open Account</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="hero-tag">PROJECT P18 • MCA ACADEMIC SYSTEM</span>
+            <h1 class="hero-title">NextGen Net Banking Platform</h1>
+            <p class="hero-sub">Experience enterprise-grade digital banking with real-time fund transfers, automated ledger reconciliation, bill payments, loans, and mutual fund investments.</p>
+            <div class="hero-actions">
+                <a href="login.html" class="btn btn-primary btn-lg" style="padding: 14px 28px; font-size: 16px;">Sign In to Portal</a>
+                <a href="register.html" class="btn btn-success btn-lg" style="padding: 14px 28px; font-size: 16px;">Create Demo Customer</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Atomic Fund Transfers</h3>
+            <p style="color: var(--text-secondary); margin-top: 8px;">Double-entry ledger with database row-level locking for zero partial updates and immediate settlement.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Role-Based Access</h3>
+            <p style="color: var(--text-secondary); margin-top: 8px;">Distinct Customer self-service dashboard and Bank Officer management console with audit logging.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3>Utility Bill Payments</h3>
+            <p style="color: var(--text-secondary); margin-top: 8px;">Instant utility billing integration covering Electricity, Water, Gas, Internet, and DTH providers.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h3>Loans & Investments</h3>
+            <p style="color: var(--text-secondary); margin-top: 8px;">End-to-end loan application review with automated EMI schedules and simulated portfolio holdings.</p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 32px; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border);">
+        BankEase Net Banking Application • Project Code: P18 • MCA Academic Full-Stack Project
+    </footer>
+</body>
+</html>

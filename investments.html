@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investments – BankEase Net Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">B</div>
+                <div class="logo-text">
+                    <h2>BankEase</h2>
+                    <span>Net Banking</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><span>📊</span> <span>Dashboard</span></a>
+                <a href="accounts.html" class="nav-link customer-only"><span>💳</span> <span>My Accounts</span></a>
+                <a href="transfer.html" class="nav-link customer-only"><span>💸</span> <span>Fund Transfer</span></a>
+                <a href="beneficiaries.html" class="nav-link customer-only"><span>👥</span> <span>Beneficiaries</span></a>
+                <a href="transactions.html" class="nav-link"><span>📜</span> <span>Transactions</span></a>
+                <a href="bill-payments.html" class="nav-link customer-only"><span>🧾</span> <span>Bill Payments</span></a>
+                <a href="loans.html" class="nav-link"><span>🏦</span> <span>Loans</span></a>
+                <a href="investments.html" class="nav-link active"><span>📈</span> <span>Investments</span></a>
+                <a href="support.html" class="nav-link"><span>💬</span> <span>Support</span></a>
+                <a href="notifications.html" class="nav-link"><span>🔔</span> <span>Notifications</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="avatar user-initials">U</div>
+                    <div class="user-info">
+                        <div class="name user-fullname">Loading...</div>
+                        <div class="sub user-role-badge badge badge-primary">Customer</div>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <div class="top-title">
+                    <h1>Investment Services</h1>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Available Investment Products</h2>
+                <div id="invest-products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 32px;">
+                    <p style="color: var(--text-muted);">Loading investment products...</p>
+                </div>
+
+                <div class="card" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <h2 class="card-title">Place Investment Order</h2>
+                    </div>
+                    <form id="invest-order-form" style="padding: 0 20px 20px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end;">
+                            <div class="form-group">
+                                <label class="form-label" for="invest-product-select">Product</label>
+                                <select id="invest-product-select" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="invest-account-select">Debit Account</label>
+                                <select id="invest-account-select" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="invest-amount">Amount (₹)</label>
+                                <input type="number" id="invest-amount" class="form-control" min="100" step="100" required>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-block" style="height: 42px;">Invest Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <h2 class="card-title">My Portfolio Holdings</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Type</th>
+                                    <th>Risk</th>
+                                    <th>Units</th>
+                                    <th>Invested Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="holdings-body">
+                                <tr><td colspan="5" style="text-align:center;">Loading holdings...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Order History</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-body">
+                                <tr><td colspan="5" style="text-align:center;">Loading orders...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/investments.js"></script>
+</body>
+</html>

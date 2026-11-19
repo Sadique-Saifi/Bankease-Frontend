@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficiaries – BankEase Net Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">B</div>
+                <div class="logo-text">
+                    <h2>BankEase</h2>
+                    <span>Net Banking</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><span>📊</span> <span>Dashboard</span></a>
+                <a href="accounts.html" class="nav-link"><span>💳</span> <span>My Accounts</span></a>
+                <a href="transfer.html" class="nav-link"><span>💸</span> <span>Fund Transfer</span></a>
+                <a href="beneficiaries.html" class="nav-link active"><span>👥</span> <span>Beneficiaries</span></a>
+                <a href="transactions.html" class="nav-link"><span>📜</span> <span>Transactions</span></a>
+                <a href="bill-payments.html" class="nav-link"><span>🧾</span> <span>Bill Payments</span></a>
+                <a href="loans.html" class="nav-link"><span>🏦</span> <span>Loans</span></a>
+                <a href="investments.html" class="nav-link"><span>📈</span> <span>Investments</span></a>
+                <a href="support.html" class="nav-link"><span>💬</span> <span>Support</span></a>
+                <a href="notifications.html" class="nav-link"><span>🔔</span> <span>Notifications</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="avatar user-initials">U</div>
+                    <div class="user-info">
+                        <div class="name user-fullname">Loading...</div>
+                        <div class="sub user-role-badge badge badge-primary">Customer</div>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <div class="top-title">
+                    <h1>Manage Beneficiaries</h1>
+                </div>
+                <div class="top-actions">
+                    <button class="btn btn-primary" onclick="openAddModal()">+ Add New Payee</button>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payee Name</th>
+                                    <th>Account Number</th>
+                                    <th>Bank Name</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="beneficiaries-body">
+                                <tr><td colspan="5" style="text-align:center;">Loading beneficiaries...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal to Add Beneficiary -->
+    <div id="add-beneficiary-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Register New Beneficiary</h3>
+                <button class="modal-close" onclick="closeAddModal()">&times;</button>
+            </div>
+            <form id="add-beneficiary-form">
+                <div class="form-group">
+                    <label class="form-label" for="ben-name">Beneficiary Full Name</label>
+                    <input type="text" id="ben-name" class="form-control" placeholder="e.g. Alice Smith" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="ben-acc">Beneficiary Account Number</label>
+                    <input type="text" id="ben-acc" class="form-control" placeholder="12-digit number" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="ben-bank">Bank Name</label>
+                    <input type="text" id="ben-bank" class="form-control" value="BankEase" placeholder="Bank name" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register Payee</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/beneficiaries.js"></script>
+</body>
+</html>

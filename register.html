@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Account – BankEase Net Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-wrapper" style="padding: 40px 20px;">
+        <div class="auth-card" style="max-width: 520px;">
+            <div class="auth-header">
+                <div class="auth-logo">B</div>
+                <h1 class="auth-title">Create BankEase Account</h1>
+                <p class="auth-sub">Open your digital savings account in minutes</p>
+            </div>
+
+            <div id="register-error" class="auth-alert hidden"></div>
+
+            <form id="register-form">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label class="form-label" for="reg-username">Username</label>
+                        <input type="text" id="reg-username" class="form-control" placeholder="johndoe" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reg-email">Email Address</label>
+                        <input type="email" id="reg-email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-fullname">Full Name</label>
+                    <input type="text" id="reg-fullname" class="form-control" placeholder="Johnathan Doe" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label class="form-label" for="reg-phone">Phone Number</label>
+                        <input type="text" id="reg-phone" class="form-control" placeholder="+91 9876543210">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reg-deposit">Initial Deposit (₹)</label>
+                        <input type="number" id="reg-deposit" class="form-control" value="10000.00" min="500" step="100">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-address">Address</label>
+                    <textarea id="reg-address" class="form-control" rows="2" placeholder="Residential street address"></textarea>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label class="form-label" for="reg-password">Password</label>
+                        <input type="password" id="reg-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reg-confirm-password">Confirm Password</label>
+                        <input type="password" id="reg-confirm-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Open Account</button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

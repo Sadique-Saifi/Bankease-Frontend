@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund Transfer – BankEase Net Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">B</div>
+                <div class="logo-text">
+                    <h2>BankEase</h2>
+                    <span>Net Banking</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><span>📊</span> <span>Dashboard</span></a>
+                <a href="accounts.html" class="nav-link"><span>💳</span> <span>My Accounts</span></a>
+                <a href="transfer.html" class="nav-link active"><span>💸</span> <span>Fund Transfer</span></a>
+                <a href="beneficiaries.html" class="nav-link"><span>👥</span> <span>Beneficiaries</span></a>
+                <a href="transactions.html" class="nav-link"><span>📜</span> <span>Transactions</span></a>
+                <a href="bill-payments.html" class="nav-link"><span>🧾</span> <span>Bill Payments</span></a>
+                <a href="loans.html" class="nav-link"><span>🏦</span> <span>Loans</span></a>
+                <a href="investments.html" class="nav-link"><span>📈</span> <span>Investments</span></a>
+                <a href="support.html" class="nav-link"><span>💬</span> <span>Support</span></a>
+                <a href="notifications.html" class="nav-link"><span>🔔</span> <span>Notifications</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="avatar user-initials">U</div>
+                    <div class="user-info">
+                        <div class="name user-fullname">Loading...</div>
+                        <div class="sub user-role-badge badge badge-primary">Customer</div>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <div class="top-title">
+                    <h1>Initiate Fund Transfer</h1>
+                </div>
+                <div class="top-actions">
+                    <a href="beneficiaries.html" class="btn btn-secondary btn-sm">+ Add Beneficiary</a>
+                </div>
+            </header>
+
+            <main class="content-body" style="max-width: 720px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Instant Payment & Transfer</h2>
+                    </div>
+
+                    <form id="transfer-form">
+                        <div class="form-group">
+                            <label class="form-label" for="source-account-select">Select Debit Account</label>
+                            <select id="source-account-select" class="form-control" required>
+                                <option value="">Loading your accounts...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Transfer Type</label>
+                            <div style="display: flex; gap: 20px; margin-top: 6px;">
+                                <label style="display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer;">
+                                    <input type="radio" name="dest-type" value="beneficiary" checked onchange="toggleDestType()">
+                                    Registered Beneficiary
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer;">
+                                    <input type="radio" name="dest-type" value="account_number" onchange="toggleDestType()">
+                                    Direct Account Number
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Beneficiary Select Container -->
+                        <div id="beneficiary-select-container" class="form-group">
+                            <label class="form-label" for="beneficiary-select">Select Beneficiary</label>
+                            <select id="beneficiary-select" class="form-control">
+                                <option value="">Select registered payee</option>
+                            </select>
+                        </div>
+
+                        <!-- Direct Account Number Container -->
+                        <div id="direct-acc-container" class="form-group hidden">
+                            <label class="form-label" for="destination-account-number">Destination Account Number</label>
+                            <input type="text" id="destination-account-number" class="form-control" placeholder="12-digit Account Number">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="transfer-amount">Transfer Amount (₹)</label>
+                            <input type="number" id="transfer-amount" class="form-control" placeholder="1000.00" min="1" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="transfer-remarks">Remarks (Optional)</label>
+                            <input type="text" id="transfer-remarks" class="form-control" placeholder="e.g. Rent, Gift, Supplies">
+                        </div>
+
+                        <button type="submit" id="transfer-submit-btn" class="btn btn-primary btn-block" style="padding: 12px;">Confirm & Transfer Funds</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Transfer Success Receipt Modal -->
+    <div id="receipt-modal" class="modal-overlay hidden">
+        <div class="modal-content" style="text-align: center;">
+            <div style="font-size: 48px; color: #10b981; margin-bottom: 12px;">✓</div>
+            <h3 style="font-size: 22px; font-weight: 700;">Transfer Successful!</h3>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Your transaction has been processed and ledger updated.</p>
+
+            <div style="background: #f8fafc; border-radius: var(--radius-sm); padding: 20px; margin: 24px 0; text-align: left; font-size: 14px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="color: var(--text-muted);">Reference Number</span>
+                    <strong id="receipt-ref">TXN123456789</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="color: var(--text-muted);">Amount Debited</span>
+                    <strong id="receipt-amount" style="color: var(--primary);">₹0.00</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: var(--text-muted);">Date & Time</span>
+                    <span id="receipt-date">Just now</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-primary btn-block" onclick="window.location.href='transactions.html'">View in Statement</button>
+                <button class="btn btn-secondary btn-block" onclick="closeReceiptModal()">Make Another Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/transfers.js"></script>
+</body>
+</html>

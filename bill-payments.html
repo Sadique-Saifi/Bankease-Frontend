@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Payments – BankEase Net Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">B</div>
+                <div class="logo-text">
+                    <h2>BankEase</h2>
+                    <span>Net Banking</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><span>📊</span> <span>Dashboard</span></a>
+                <a href="accounts.html" class="nav-link"><span>💳</span> <span>My Accounts</span></a>
+                <a href="transfer.html" class="nav-link"><span>💸</span> <span>Fund Transfer</span></a>
+                <a href="beneficiaries.html" class="nav-link"><span>👥</span> <span>Beneficiaries</span></a>
+                <a href="transactions.html" class="nav-link"><span>📜</span> <span>Transactions</span></a>
+                <a href="bill-payments.html" class="nav-link active"><span>🧾</span> <span>Bill Payments</span></a>
+                <a href="loans.html" class="nav-link"><span>🏦</span> <span>Loans</span></a>
+                <a href="investments.html" class="nav-link"><span>📈</span> <span>Investments</span></a>
+                <a href="support.html" class="nav-link"><span>💬</span> <span>Support</span></a>
+                <a href="notifications.html" class="nav-link"><span>🔔</span> <span>Notifications</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="avatar user-initials">U</div>
+                    <div class="user-info">
+                        <div class="name user-fullname">Loading...</div>
+                        <div class="sub user-role-badge badge badge-primary">Customer</div>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <div class="top-title">
+                    <h1>Utility Bill Payments</h1>
+                </div>
+            </header>
+
+            <main class="content-body" style="max-width: 900px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <!-- Pay Bill Form -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Pay a Bill</h2>
+                        </div>
+                        <form id="bill-pay-form">
+                            <div class="form-group">
+                                <label class="form-label" for="bill-category">Select Category</label>
+                                <select id="bill-category" class="form-control" onchange="filterBillersByCategory()">
+                                    <option value="">All Categories</option>
+                                    <option value="ELECTRICITY">Electricity</option>
+                                    <option value="WATER">Water</option>
+                                    <option value="GAS">Piped Gas</option>
+                                    <option value="INTERNET">Broadband & Fiber</option>
+                                    <option value="MOBILE">Mobile Postpaid</option>
+                                    <option value="DTH">DTH Recharge</option>
+                                    <option value="INSURANCE">Insurance Premium</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="biller-select">Select Biller</label>
+                                <select id="biller-select" class="form-control" required>
+                                    <option value="">Loading billers...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="consumer-ref">Consumer / Account ID</label>
+                                <input type="text" id="consumer-ref" class="form-control" placeholder="e.g. CA-9876543210" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="bill-source-account">Debit Bank Account</label>
+                                <select id="bill-source-account" class="form-control" required>
+                                    <option value="">Loading your accounts...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="bill-amount">Bill Amount (₹)</label>
+                                <input type="number" id="bill-amount" class="form-control" placeholder="e.g. 1250.00" min="1" step="0.01" required>
+                            </div>
+
+                            <button type="submit" id="bill-submit-btn" class="btn btn-primary btn-block">Authorize & Pay Bill</button>
+                        </form>
+                    </div>
+
+                    <!-- Past Bill Payments -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Recent Bill Receipts</h2>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Biller</th>
+                                        <th>Reference</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bill-history-body">
+                                    <tr><td colspan="3" style="text-align:center;">Loading past payments...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/bill-payments.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support – BankEase Net Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">B</div>
+                <div class="logo-text">
+                    <h2>BankEase</h2>
+                    <span>Net Banking</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><span>📊</span> <span>Dashboard</span></a>
+                <a href="accounts.html" class="nav-link customer-only"><span>💳</span> <span>My Accounts</span></a>
+                <a href="transfer.html" class="nav-link customer-only"><span>💸</span> <span>Fund Transfer</span></a>
+                <a href="beneficiaries.html" class="nav-link customer-only"><span>👥</span> <span>Beneficiaries</span></a>
+                <a href="transactions.html" class="nav-link"><span>📜</span> <span>Transactions</span></a>
+                <a href="bill-payments.html" class="nav-link customer-only"><span>🧾</span> <span>Bill Payments</span></a>
+                <a href="loans.html" class="nav-link"><span>🏦</span> <span>Loans</span></a>
+                <a href="investments.html" class="nav-link customer-only"><span>📈</span> <span>Investments</span></a>
+                <a href="support.html" class="nav-link active"><span>💬</span> <span>Support</span></a>
+                <a href="notifications.html" class="nav-link"><span>🔔</span> <span>Notifications</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="avatar user-initials">U</div>
+                    <div class="user-info">
+                        <div class="name user-fullname">Loading...</div>
+                        <div class="sub user-role-badge badge badge-primary">Customer</div>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <div class="top-title">
+                    <h1>Customer Support</h1>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <div id="create-ticket-section" class="card customer-only" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <h2 class="card-title">Raise a New Ticket</h2>
+                    </div>
+                    <form id="create-ticket-form" style="padding: 0 20px 20px;">
+                        <div class="form-group">
+                            <label class="form-label" for="ticket-subject">Subject</label>
+                            <input type="text" id="ticket-subject" class="form-control" placeholder="Brief description of your issue" required maxlength="200">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: end;">
+                            <div class="form-group">
+                                <label class="form-label" for="ticket-description">Description</label>
+                                <textarea id="ticket-description" class="form-control" rows="3" placeholder="Detailed explanation..." required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="ticket-priority">Priority</label>
+                                <select id="ticket-priority" class="form-control">
+                                    <option value="LOW">Low</option>
+                                    <option value="MEDIUM" selected>Medium</option>
+                                    <option value="HIGH">High</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Ticket</button>
+                    </form>
+                </div>
+
+                <div class="card" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <h2 class="card-title" id="tickets-list-title">My Support Tickets</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Subject</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tickets-body">
+                                <tr><td colspan="6" style="text-align:center;">Loading tickets...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="ticket-detail-section" class="hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title" id="detail-ticket-title">Ticket Details</h2>
+                            <button class="btn btn-secondary btn-sm" onclick="closeTicketDetail()">← Back to List</button>
+                        </div>
+                        <div style="padding: 0 20px;">
+                            <div id="detail-ticket-meta" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;"></div>
+                            <div id="detail-ticket-desc" style="margin-bottom: 20px; padding: 16px; background: var(--bg-secondary); border-radius: var(--radius); font-size: 14px;"></div>
+
+                            <div id="officer-status-controls" class="hidden" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+                                <select id="update-ticket-status" class="form-control" style="max-width: 200px;">
+                                    <option value="OPEN">Open</option>
+                                    <option value="IN_PROGRESS">In Progress</option>
+                                    <option value="RESOLVED">Resolved</option>
+                                    <option value="CLOSED">Closed</option>
+                                </select>
+                                <button class="btn btn-primary btn-sm" onclick="updateTicketStatus()">Update Status</button>
+                            </div>
+                        </div>
+
+                        <div style="padding: 0 20px;">
+                            <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">Conversation</h3>
+                            <div id="messages-thread" style="max-height: 400px; overflow-y: auto; margin-bottom: 16px;"></div>
+                        </div>
+
+                        <form id="reply-form" style="padding: 0 20px 20px;">
+                            <div style="display: flex; gap: 12px;">
+                                <input type="text" id="reply-message" class="form-control" placeholder="Type your reply..." required style="flex: 1;">
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/support.js"></script>
+</body>
+</html>
