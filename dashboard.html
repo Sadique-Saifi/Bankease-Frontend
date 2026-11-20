@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -23,34 +24,34 @@
 
             <nav class="sidebar-nav">
                 <a href="dashboard.html" class="nav-link active">
-                    <span>📊</span> <span>Dashboard</span>
+                    <i data-lucide="layout-dashboard"></i> <span>Dashboard</span>
                 </a>
                 <a href="accounts.html" class="nav-link customer-only">
-                    <span>💳</span> <span>My Accounts</span>
+                    <i data-lucide="credit-card"></i> <span>My Accounts</span>
                 </a>
                 <a href="transfer.html" class="nav-link customer-only">
-                    <span>💸</span> <span>Fund Transfer</span>
+                    <i data-lucide="send"></i> <span>Fund Transfer</span>
                 </a>
                 <a href="beneficiaries.html" class="nav-link customer-only">
-                    <span>👥</span> <span>Beneficiaries</span>
+                    <i data-lucide="users"></i> <span>Beneficiaries</span>
                 </a>
                 <a href="transactions.html" class="nav-link">
-                    <span>📜</span> <span>Transactions</span>
+                    <i data-lucide="receipt"></i> <span>Transactions</span>
                 </a>
                 <a href="bill-payments.html" class="nav-link customer-only">
-                    <span>🧾</span> <span>Bill Payments</span>
+                    <i data-lucide="file-text"></i> <span>Bill Payments</span>
                 </a>
                 <a href="loans.html" class="nav-link">
-                    <span>🏦</span> <span>Loans</span>
+                    <i data-lucide="landmark"></i> <span>Loans</span>
                 </a>
                 <a href="investments.html" class="nav-link customer-only">
-                    <span>📈</span> <span>Investments</span>
+                    <i data-lucide="trending-up"></i> <span>Investments</span>
                 </a>
                 <a href="support.html" class="nav-link">
-                    <span>💬</span> <span>Support</span>
+                    <i data-lucide="help-circle"></i> <span>Support</span>
                 </a>
                 <a href="notifications.html" class="nav-link">
-                    <span>🔔</span> <span>Notifications</span>
+                    <i data-lucide="bell"></i> <span>Notifications</span>
                 </a>
             </nav>
 
@@ -62,7 +63,7 @@
                         <div class="sub user-role-badge badge badge-primary">Customer</div>
                     </div>
                 </div>
-                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px; display: inline-flex; align-items: center;"><i data-lucide="log-out"></i></a>
             </div>
         </aside>
 
@@ -75,50 +76,70 @@
                 <div class="top-actions">
                     <span id="header-user-id" class="badge badge-info user-account-id">...</span>
                     <a href="notifications.html" class="icon-btn" title="Notifications">
-                        <span>🔔</span>
+                        <i data-lucide="bell"></i>
                         <span id="unread-dot" class="badge-dot hidden"></span>
                     </a>
-                    <button class="btn btn-secondary btn-sm logout-btn">Logout</button>
+                    <button class="btn btn-secondary btn-sm logout-btn">
+                        <i data-lucide="log-out"></i> Logout
+                    </button>
                 </div>
             </header>
 
             <main class="content-body">
+                <!-- ============================================ -->
                 <!-- CUSTOMER DASHBOARD VIEW -->
+                <!-- ============================================ -->
                 <div id="customer-view" class="hidden">
+                    <!-- Balance Hero Card -->
                     <div class="balance-card">
                         <div class="balance-label">Total Available Net Balance</div>
                         <div id="cust-total-balance" class="balance-amount">₹0.00</div>
                         <div class="balance-actions">
-                            <a href="transfer.html" class="btn">💸 Send Money</a>
-                            <a href="bill-payments.html" class="btn">🧾 Pay Utility Bill</a>
-                            <a href="accounts.html" class="btn">➕ Open Account</a>
+                            <a href="transfer.html" class="btn"><i data-lucide="send"></i> Send Money</a>
+                            <a href="bill-payments.html" class="btn"><i data-lucide="file-text"></i> Pay Utility Bill</a>
+                            <a href="accounts.html" class="btn"><i data-lucide="plus-circle"></i> Open Account</a>
                         </div>
                     </div>
 
+                    <!-- In-person visit banner (if any loan requires visit) -->
+                    <div id="cust-visit-alert" class="hidden" style="background: #fdf4ff; border-left: 5px solid #7e22ce; border-radius: var(--radius-sm); padding: 16px 20px; margin-bottom: 24px; box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div style="background: #f3e8ff; color: #7e22ce; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 15px; font-weight: 700; color: #581c87;">In-Person Verification Required</h3>
+                                <p id="cust-visit-alert-text" style="font-size: 13px; color: #6b21a8; margin: 4px 0 8px;"></p>
+                                <a href="loans.html" class="btn btn-sm" style="background: #7e22ce; color: white;">View Details & Instructions →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stat Metrics Grid -->
                     <div class="metrics-grid">
                         <div class="metric-card">
-                            <div class="metric-icon blue">💳</div>
+                            <div class="metric-icon blue"><i data-lucide="credit-card"></i></div>
                             <div class="metric-details">
                                 <div class="label">Total Accounts</div>
                                 <div id="cust-accounts-count" class="value">0</div>
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-icon amber">📉</div>
+                            <div class="metric-icon amber"><i data-lucide="arrow-down-right"></i></div>
                             <div class="metric-details">
                                 <div class="label">Monthly Debits</div>
                                 <div id="cust-monthly-debits" class="value">₹0.00</div>
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-icon green">📈</div>
+                            <div class="metric-icon green"><i data-lucide="arrow-up-right"></i></div>
                             <div class="metric-details">
                                 <div class="label">Monthly Credits</div>
                                 <div id="cust-monthly-credits" class="value">₹0.00</div>
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-icon purple">💎</div>
+                            <div class="metric-icon purple"><i data-lucide="gem"></i></div>
                             <div class="metric-details">
                                 <div class="label">Invested Assets</div>
                                 <div id="cust-total-invested" class="value">₹0.00</div>
@@ -126,8 +147,39 @@
                         </div>
                     </div>
 
+                    <!-- Application Tracking Section: Account & Loan Requests -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                        <!-- Account Opening Applications Tracker -->
+                        <div class="card" style="margin-bottom: 0;">
+                            <div class="card-header">
+                                <div>
+                                    <h2 class="card-title">Account Opening Status</h2>
+                                    <p style="font-size: 12px; color: var(--text-muted);">Officer verification takes up to 24 hours.</p>
+                                </div>
+                                <a href="accounts.html" class="btn btn-secondary btn-sm">New Request</a>
+                            </div>
+                            <div id="cust-account-requests-box">
+                                <p style="color: var(--text-muted); font-size: 13px;">Checking account request status...</p>
+                            </div>
+                        </div>
+
+                        <!-- Loan Applications Tracker -->
+                        <div class="card" style="margin-bottom: 0;">
+                            <div class="card-header">
+                                <div>
+                                    <h2 class="card-title">Loan Application Status</h2>
+                                    <p style="font-size: 12px; color: var(--text-muted);">Track review, verification visits & EMI schedule.</p>
+                                </div>
+                                <a href="loans.html" class="btn btn-secondary btn-sm">Apply Loan</a>
+                            </div>
+                            <div id="cust-loan-summary">
+                                <p style="color: var(--text-muted); font-size: 13px;">Checking loan status...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transactions & Quick Services -->
                     <div class="dashboard-grid">
-                        <!-- Recent Transactions -->
                         <div class="card">
                             <div class="card-header">
                                 <h2 class="card-title">Recent Transactions</h2>
@@ -151,108 +203,210 @@
                             </div>
                         </div>
 
-                        <!-- Loan & Investment Status Cards -->
-                        <div>
-                            <div class="card">
-                                <div class="card-header">
-                                    <h2 class="card-title">Active Loan Summary</h2>
-                                    <a href="loans.html" class="btn btn-secondary btn-sm">Apply</a>
-                                </div>
-                                <div id="cust-loan-summary">
-                                    <p style="color: var(--text-secondary); font-size: 14px;">Loading loan status...</p>
-                                </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Quick Services</h2>
                             </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h2 class="card-title">Quick Services</h2>
-                                </div>
-                                <div style="display: flex; flex-direction: column; gap: 10px;">
-                                    <a href="beneficiaries.html" class="btn btn-secondary btn-block" style="justify-content: flex-start;">👥 Manage Beneficiaries</a>
-                                    <a href="investments.html" class="btn btn-secondary btn-block" style="justify-content: flex-start;">📈 Explore Mutual Funds</a>
-                                    <a href="support.html" class="btn btn-secondary btn-block" style="justify-content: flex-start;">💬 Contact 24/7 Helpdesk</a>
-                                </div>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <a href="beneficiaries.html" class="btn btn-secondary btn-block" style="justify-content: flex-start;">
+                                    <i data-lucide="users"></i> Manage Beneficiaries
+                                </a>
+                                <a href="transfer.html" class="btn btn-secondary btn-block" style="justify-content: flex-start;">
+                                    <i data-lucide="send"></i> Instant Fund Transfer
+                                </a>
+                                <a href="investments.html" class="btn btn-secondary btn-block" style="justify-content: flex-start;">
+                                    <i data-lucide="trending-up"></i> Explore Mutual Funds
+                                </a>
+                                <a href="support.html" class="btn btn-secondary btn-block" style="justify-content: flex-start;">
+                                    <i data-lucide="help-circle"></i> Contact Helpdesk
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- ============================================ -->
                 <!-- BANK OFFICER DASHBOARD VIEW -->
+                <!-- ============================================ -->
                 <div id="officer-view" class="hidden">
                     <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 28px; border-radius: var(--radius); margin-bottom: 24px;">
                         <h2 style="font-size: 24px; font-weight: 700;">Officer Management Console</h2>
-                        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">BankEase System Administration & Portfolio Oversight</p>
+                        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">BankEase System Administration, Account Verification & Credit Authorization</p>
                     </div>
 
+                    <!-- Officer Metrics Grid -->
                     <div class="metrics-grid">
                         <div class="metric-card">
-                            <div class="metric-icon blue">👥</div>
+                            <div class="metric-icon blue"><i data-lucide="users"></i></div>
                             <div class="metric-details">
                                 <div class="label">Total Customers</div>
                                 <div id="off-total-customers" class="value">0</div>
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-icon green">🏦</div>
+                            <div class="metric-icon green"><i data-lucide="landmark"></i></div>
                             <div class="metric-details">
                                 <div class="label">Active Accounts</div>
                                 <div id="off-total-accounts" class="value">0</div>
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-icon purple">💰</div>
+                            <div class="metric-icon purple"><i data-lucide="wallet"></i></div>
                             <div class="metric-details">
                                 <div class="label">Total Deposits</div>
                                 <div id="off-total-deposits" class="value">₹0.00</div>
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-icon amber">⏳</div>
+                            <div class="metric-icon amber"><i data-lucide="clock"></i></div>
+                            <div class="metric-details">
+                                <div class="label">Pending Accounts</div>
+                                <div id="off-pending-accounts" class="value">0</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon amber"><i data-lucide="file-text"></i></div>
                             <div class="metric-details">
                                 <div class="label">Pending Loans</div>
                                 <div id="off-pending-loans" class="value">0</div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="dashboard-grid">
-                        <!-- Pending Actions -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h2 class="card-title">Recent System Audit Trail</h2>
-                                <a href="transactions.html" class="btn btn-secondary btn-sm">Audit Logs</a>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Timestamp</th>
-                                            <th>Actor</th>
-                                            <th>Action</th>
-                                            <th>Entity</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="off-audit-body">
-                                        <tr><td colspan="4" style="text-align:center;">Loading audit trail...</td></tr>
-                                    </tbody>
-                                </table>
+                        <div class="metric-card">
+                            <div class="metric-icon purple"><i data-lucide="map-pin"></i></div>
+                            <div class="metric-details">
+                                <div class="label">Visits Required</div>
+                                <div id="off-visit-loans" class="value">0</div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Officer Quick Actions -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h2 class="card-title">Officer Tasks</h2>
+                    <!-- SECTION 1: Pending Account Opening Requests -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h2 class="card-title">Pending Account Requests</h2>
+                                <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Customer account requests awaiting bank officer review and activation.</p>
                             </div>
-                            <div style="display: flex; flex-direction: column; gap: 12px;">
-                                <a href="loans.html" class="btn btn-primary btn-block">Review Loan Applications</a>
-                                <a href="support.html" class="btn btn-secondary btn-block">Answer Support Tickets</a>
-                                <a href="accounts.html" class="btn btn-secondary btn-block">Inspect Accounts Registry</a>
+                            <a href="accounts.html" class="btn btn-secondary btn-sm">Full Registry</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>Customer</th>
+                                        <th>Account Type</th>
+                                        <th>Deposit</th>
+                                        <th>Submitted</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="off-pending-accounts-body">
+                                    <tr><td colspan="6" style="text-align:center;">Loading pending account requests...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: Loan Application Requests -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h2 class="card-title">Loan Application Requests</h2>
+                                <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Review applications, authorize approvals, or request in-person verification.</p>
                             </div>
+                            <a href="loans.html" class="btn btn-secondary btn-sm">Manage All Loans</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Application ID</th>
+                                        <th>Customer</th>
+                                        <th>Product</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Submitted</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="off-pending-loans-body">
+                                    <tr><td colspan="7" style="text-align:center;">Loading pending loan applications...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: Recent Audit Trail -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Recent System Audit Trail</h2>
+                            <a href="transactions.html" class="btn btn-secondary btn-sm">Full Logs</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Actor</th>
+                                        <th>Action</th>
+                                        <th>Entity</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="off-audit-body">
+                                    <tr><td colspan="4" style="text-align:center;">Loading audit trail...</td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </main>
+        </div>
+    </div>
+
+    <!-- Officer: Approve Account Request Modal -->
+    <div id="dash-approve-acc-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Approve Account Opening Request</h3>
+                <button class="modal-close" onclick="closeDashApproveAccModal()">&times;</button>
+            </div>
+            <div style="padding: 8px 0 16px;">
+                <p id="dash-approve-acc-msg" style="font-size: 14px; margin-bottom: 14px;"></p>
+                <div class="form-group">
+                    <label class="form-label" for="dash-approve-acc-remarks">Officer Remarks (Optional)</label>
+                    <input type="text" id="dash-approve-acc-remarks" class="form-control" placeholder="e.g. Identity documents verified.">
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button type="button" class="btn btn-secondary" onclick="closeDashApproveAccModal()">Cancel</button>
+                <button type="button" id="dash-confirm-approve-acc-btn" class="btn btn-success">
+                    <i data-lucide="check"></i> Confirm & Activate
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Officer: Reject Account Request Modal -->
+    <div id="dash-reject-acc-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Reject Account Opening Request</h3>
+                <button class="modal-close" onclick="closeDashRejectAccModal()">&times;</button>
+            </div>
+            <div style="padding: 8px 0 16px;">
+                <p id="dash-reject-acc-msg" style="font-size: 14px; margin-bottom: 14px;">Please provide the reason for declining this request:</p>
+                <div class="form-group">
+                    <label class="form-label" for="dash-reject-acc-reason">Rejection Reason <span style="color:var(--danger)">*</span></label>
+                    <textarea id="dash-reject-acc-reason" class="form-control" rows="3" required placeholder="State rejection reason..."></textarea>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button type="button" class="btn btn-secondary" onclick="closeDashRejectAccModal()">Cancel</button>
+                <button type="button" id="dash-confirm-reject-acc-btn" class="btn btn-danger">
+                    <i data-lucide="x"></i> Confirm Rejection
+                </button>
+            </div>
         </div>
     </div>
 

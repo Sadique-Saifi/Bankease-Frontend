@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -20,16 +21,16 @@
                 </div>
             </div>
             <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-link"><span>📊</span> <span>Dashboard</span></a>
-                <a href="accounts.html" class="nav-link customer-only"><span>💳</span> <span>My Accounts</span></a>
-                <a href="transfer.html" class="nav-link customer-only"><span>💸</span> <span>Fund Transfer</span></a>
-                <a href="beneficiaries.html" class="nav-link customer-only"><span>👥</span> <span>Beneficiaries</span></a>
-                <a href="transactions.html" class="nav-link active"><span>📜</span> <span>Transactions</span></a>
-                <a href="bill-payments.html" class="nav-link customer-only"><span>🧾</span> <span>Bill Payments</span></a>
-                <a href="loans.html" class="nav-link"><span>🏦</span> <span>Loans</span></a>
-                <a href="investments.html" class="nav-link customer-only"><span>📈</span> <span>Investments</span></a>
-                <a href="support.html" class="nav-link"><span>💬</span> <span>Support</span></a>
-                <a href="notifications.html" class="nav-link"><span>🔔</span> <span>Notifications</span></a>
+                <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+                <a href="accounts.html" class="nav-link customer-only"><i data-lucide="credit-card"></i> <span>My Accounts</span></a>
+                <a href="transfer.html" class="nav-link customer-only"><i data-lucide="send"></i> <span>Fund Transfer</span></a>
+                <a href="beneficiaries.html" class="nav-link customer-only"><i data-lucide="users"></i> <span>Beneficiaries</span></a>
+                <a href="transactions.html" class="nav-link active"><i data-lucide="receipt"></i> <span>Transactions</span></a>
+                <a href="bill-payments.html" class="nav-link customer-only"><i data-lucide="file-text"></i> <span>Bill Payments</span></a>
+                <a href="loans.html" class="nav-link"><i data-lucide="landmark"></i> <span>Loans</span></a>
+                <a href="investments.html" class="nav-link customer-only"><i data-lucide="trending-up"></i> <span>Investments</span></a>
+                <a href="support.html" class="nav-link"><i data-lucide="help-circle"></i> <span>Support</span></a>
+                <a href="notifications.html" class="nav-link"><i data-lucide="bell"></i> <span>Notifications</span></a>
             </nav>
             <div class="sidebar-footer">
                 <div class="user-snippet">
@@ -39,7 +40,7 @@
                         <div class="sub user-role-badge badge badge-primary">Customer</div>
                     </div>
                 </div>
-                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px; display: inline-flex; align-items: center;"><i data-lucide="log-out"></i></a>
             </div>
         </aside>
 
@@ -49,7 +50,7 @@
                     <h1>Transaction History & Statement</h1>
                 </div>
                 <div class="top-actions">
-                    <button class="btn btn-secondary btn-sm" onclick="exportStatement()">📥 Export Statement</button>
+                    <button class="btn btn-secondary btn-sm" onclick="exportStatement()"><i data-lucide="download"></i> Export Statement</button>
                 </div>
             </header>
 
@@ -107,5 +108,6 @@
     <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/transactions.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
 </body>
 </html>

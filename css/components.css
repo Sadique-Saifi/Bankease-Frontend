@@ -173,6 +173,8 @@ select.form-control {
 .badge-warning { background: #fef3c7; color: #b45309; }
 .badge-info { background: #e0f2fe; color: #0369a1; }
 .badge-primary { background: #dbeafe; color: #1d4ed8; }
+.badge-purple { background: #f3e8ff; color: #7e22ce; }
+.badge-secondary { background: #f1f5f9; color: #475569; }
 
 /* Modals */
 .modal-overlay {

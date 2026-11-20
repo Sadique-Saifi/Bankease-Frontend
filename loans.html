@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -20,16 +21,16 @@
                 </div>
             </div>
             <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-link"><span>📊</span> <span>Dashboard</span></a>
-                <a href="accounts.html" class="nav-link customer-only"><span>💳</span> <span>My Accounts</span></a>
-                <a href="transfer.html" class="nav-link customer-only"><span>💸</span> <span>Fund Transfer</span></a>
-                <a href="beneficiaries.html" class="nav-link customer-only"><span>👥</span> <span>Beneficiaries</span></a>
-                <a href="transactions.html" class="nav-link"><span>📜</span> <span>Transactions</span></a>
-                <a href="bill-payments.html" class="nav-link customer-only"><span>🧾</span> <span>Bill Payments</span></a>
-                <a href="loans.html" class="nav-link active"><span>🏦</span> <span>Loans</span></a>
-                <a href="investments.html" class="nav-link customer-only"><span>📈</span> <span>Investments</span></a>
-                <a href="support.html" class="nav-link"><span>💬</span> <span>Support</span></a>
-                <a href="notifications.html" class="nav-link"><span>🔔</span> <span>Notifications</span></a>
+                <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+                <a href="accounts.html" class="nav-link customer-only"><i data-lucide="credit-card"></i> <span>My Accounts</span></a>
+                <a href="transfer.html" class="nav-link customer-only"><i data-lucide="send"></i> <span>Fund Transfer</span></a>
+                <a href="beneficiaries.html" class="nav-link customer-only"><i data-lucide="users"></i> <span>Beneficiaries</span></a>
+                <a href="transactions.html" class="nav-link"><i data-lucide="receipt"></i> <span>Transactions</span></a>
+                <a href="bill-payments.html" class="nav-link customer-only"><i data-lucide="file-text"></i> <span>Bill Payments</span></a>
+                <a href="loans.html" class="nav-link active"><i data-lucide="landmark"></i> <span>Loans</span></a>
+                <a href="investments.html" class="nav-link customer-only"><i data-lucide="trending-up"></i> <span>Investments</span></a>
+                <a href="support.html" class="nav-link"><i data-lucide="help-circle"></i> <span>Support</span></a>
+                <a href="notifications.html" class="nav-link"><i data-lucide="bell"></i> <span>Notifications</span></a>
             </nav>
             <div class="sidebar-footer">
                 <div class="user-snippet">
@@ -39,7 +40,7 @@
                         <div class="sub user-role-badge badge badge-primary">Customer</div>
                     </div>
                 </div>
-                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px;">⏻</a>
+                <a href="#" class="logout-btn" title="Sign Out" style="color: #94a3b8; font-size: 18px; display: inline-flex; align-items: center;"><i data-lucide="log-out"></i></a>
             </div>
         </aside>
 
@@ -53,14 +54,21 @@
             <main class="content-body">
                 <!-- Customer Section: Loan Products Showcase -->
                 <div id="customer-products-section" class="customer-only">
-                    <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Available Loan Products</h2>
+                    <div style="margin-bottom: 20px;">
+                        <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Available Loan Products</h2>
+                        <p style="font-size: 13px; color: var(--text-secondary);">Select a competitive loan product tailored for your personal, education, or business aspirations.</p>
+                    </div>
+
                     <div id="loan-products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 32px;">
                         <!-- Injected -->
                     </div>
 
                     <div class="card">
                         <div class="card-header">
-                            <h2 class="card-title">My Loan Applications & Repayment Schedules</h2>
+                            <div>
+                                <h2 class="card-title">My Loan Applications & Repayment Schedules</h2>
+                                <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Track review progress, verification visits, and manage EMI installments.</p>
+                            </div>
                         </div>
                         <div id="my-loans-container">
                             <p style="color: var(--text-muted); font-size: 14px;">Loading your loan applications...</p>
@@ -71,9 +79,21 @@
                 <!-- Bank Officer Section: Applications Review Queue -->
                 <div id="officer-review-section" class="hidden">
                     <div class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">Loan Applications Review Queue</h2>
+                        <div class="card-header" style="flex-wrap: wrap; gap: 12px;">
+                            <div>
+                                <h2 class="card-title">Loan Application Requests</h2>
+                                <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Review applications, authorize approvals, request in-person visits, or record rejection decisions.</p>
+                            </div>
+                            <!-- Queue Filter Buttons -->
+                            <div id="loan-filter-tabs" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button class="btn btn-primary btn-sm loan-filter-btn active" data-filter="ALL">All (<span id="count-all">0</span>)</button>
+                                <button class="btn btn-secondary btn-sm loan-filter-btn" data-filter="PENDING">Pending Review (<span id="count-pending">0</span>)</button>
+                                <button class="btn btn-secondary btn-sm loan-filter-btn" data-filter="VISIT_REQUIRED">Visit Required (<span id="count-visit">0</span>)</button>
+                                <button class="btn btn-secondary btn-sm loan-filter-btn" data-filter="APPROVED">Approved (<span id="count-approved">0</span>)</button>
+                                <button class="btn btn-secondary btn-sm loan-filter-btn" data-filter="REJECTED">Rejected (<span id="count-rejected">0</span>)</button>
+                            </div>
                         </div>
+
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -84,11 +104,12 @@
                                         <th>Requested Amount</th>
                                         <th>Tenure</th>
                                         <th>Status</th>
+                                        <th>Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody id="officer-loan-queue-body">
-                                    <tr><td colspan="7" style="text-align:center;">Loading application queue...</td></tr>
+                                    <tr><td colspan="8" style="text-align:center;">Loading application queue...</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -105,19 +126,118 @@
                 <h3 class="modal-title" id="apply-modal-title">Apply for Loan</h3>
                 <button class="modal-close" onclick="closeApplyModal()">&times;</button>
             </div>
+
+            <!-- Notice Banner -->
+            <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px 14px; border-radius: 4px; margin-bottom: 18px; font-size: 13px; color: #1e40af;">
+                <div style="display:flex; align-items:center; gap:6px; font-weight:600; margin-bottom:3px;">
+                    <i data-lucide="clock" style="width:16px;height:16px;"></i> Verification Notice
+                </div>
+                Your loan application will be reviewed by our Bank Officer. Allow up to 24 hours for initial verification. You can track application progress from your dashboard.
+            </div>
+
             <form id="apply-loan-form">
                 <input type="hidden" id="apply-product-id">
                 <div class="form-group">
                     <label class="form-label" for="apply-amount">Requested Loan Amount (₹)</label>
-                    <input type="number" id="apply-amount" class="form-control" required min="1000">
-                    <span id="amount-hint" style="font-size: 11px; color: var(--text-muted);"></span>
+                    <input type="number" id="apply-amount" class="form-control" required min="1000" step="1000">
+                    <span id="amount-hint" style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;"></span>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="apply-duration">Repayment Tenure (Months)</label>
-                    <input type="number" id="apply-duration" class="form-control" value="24" min="6" max="360" required>
+                    <input type="number" id="apply-duration" class="form-control" value="24" min="1" max="360" required>
+                    <small style="color: var(--text-muted); font-size: 11px;">Flexible monthly installments based on product tenure.</small>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Submit Loan Application</button>
+                <button type="submit" id="submit-loan-btn" class="btn btn-primary btn-block">
+                    <i data-lucide="send"></i> Submit Loan Application
+                </button>
             </form>
+        </div>
+    </div>
+
+    <!-- Officer: Approve Loan Modal -->
+    <div id="approve-loan-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Approve Loan Application</h3>
+                <button class="modal-close" onclick="closeApproveLoanModal()">&times;</button>
+            </div>
+            <div style="padding: 8px 0 16px;">
+                <p id="approve-loan-msg" style="font-size: 14px; color: var(--text-primary); margin-bottom: 16px;">
+                    Are you sure you want to approve this loan application?
+                </p>
+                <div class="form-group">
+                    <label class="form-label" for="approve-loan-remarks">Officer Approval Remarks (Optional)</label>
+                    <input type="text" id="approve-loan-remarks" class="form-control" placeholder="e.g. Credit score validated, salary slips verified.">
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button type="button" class="btn btn-secondary" onclick="closeApproveLoanModal()">Cancel</button>
+                <button type="button" id="confirm-approve-loan-btn" class="btn btn-success">
+                    <i data-lucide="check"></i> Confirm & Authorize Loan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Officer: Reject Loan Modal -->
+    <div id="reject-loan-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Reject Loan Application</h3>
+                <button class="modal-close" onclick="closeRejectLoanModal()">&times;</button>
+            </div>
+            <div style="padding: 8px 0 16px;">
+                <p id="reject-loan-msg" style="font-size: 14px; color: var(--text-primary); margin-bottom: 16px;">
+                    Please provide the reason for rejection (required). This decision and reason will be communicated to the customer.
+                </p>
+                <div class="form-group">
+                    <label class="form-label" for="reject-loan-reason">Rejection Reason <span style="color:var(--danger)">*</span></label>
+                    <textarea id="reject-loan-reason" class="form-control" rows="3" placeholder="Provide reason (e.g. Insufficient credit score, income criteria not met...)" required></textarea>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button type="button" class="btn btn-secondary" onclick="closeRejectLoanModal()">Cancel</button>
+                <button type="button" id="confirm-reject-loan-btn" class="btn btn-danger">
+                    <i data-lucide="x"></i> Confirm Rejection
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Officer: Request In-Person Verification Modal -->
+    <div id="visit-loan-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Request In-Person Verification</h3>
+                <button class="modal-close" onclick="closeVisitLoanModal()">&times;</button>
+            </div>
+            <div style="padding: 8px 0 16px;">
+                <p id="visit-loan-msg" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+                    Specify physical verification instructions and branch visit details for this applicant. The loan status will update to <strong>VISIT_REQUIRED</strong> without approving.
+                </p>
+                <div class="form-group">
+                    <label class="form-label" for="visit-instructions-input">Verification Instructions <span style="color:var(--danger)">*</span></label>
+                    <textarea id="visit-instructions-input" class="form-control" rows="2" placeholder="e.g. Please bring original PAN card, last 3 months payslips, and property deeds." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="visit-location-input">Branch / Visit Location</label>
+                    <input type="text" id="visit-location-input" class="form-control" placeholder="e.g. Main Metro Branch, Desk 3 (Loan Dept)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="visit-appointment-input">Suggested Appointment Date & Time (Optional)</label>
+                    <input type="datetime-local" id="visit-appointment-input" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="visit-remarks-input">Officer Remarks (Optional)</label>
+                    <input type="text" id="visit-remarks-input" class="form-control" placeholder="e.g. Awaiting physical document inspection.">
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button type="button" class="btn btn-secondary" onclick="closeVisitLoanModal()">Cancel</button>
+                <button type="button" id="confirm-visit-loan-btn" class="btn btn-primary" style="background-color: #7e22ce;">
+                    <i data-lucide="map-pin"></i> Request Verification Visit
+                </button>
+            </div>
         </div>
     </div>
 
@@ -138,7 +258,9 @@
                     <label class="form-label" for="repay-source-account">Debit Bank Account</label>
                     <select id="repay-source-account" class="form-control" required></select>
                 </div>
-                <button type="submit" class="btn btn-success btn-block">Authorize & Pay EMI</button>
+                <button type="submit" class="btn btn-success btn-block">
+                    <i data-lucide="check-circle"></i> Authorize & Pay EMI
+                </button>
             </form>
         </div>
     </div>

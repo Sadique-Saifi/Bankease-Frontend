@@ -19,7 +19,8 @@ async function loadNotifications() {
 
         if (!container) return;
         if (!notifications.length) {
-            container.innerHTML = '<div class="card" style="padding: 40px; text-align: center;"><p style="color: var(--text-muted); font-size: 15px;">🔔 No notifications yet.</p></div>';
+            container.innerHTML = '<div class="card" style="padding: 40px; text-align: center;"><p style="color: var(--text-muted); font-size: 15px;"><i data-lucide="bell" style="width:28px;height:28px;display:block;margin:0 auto 8px;"></i> No notifications yet.</p></div>';
+            if (window.lucide) lucide.createIcons();
             return;
         }
 
@@ -28,7 +29,7 @@ async function loadNotifications() {
                 <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                     <div>
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                            <span style="font-size: 16px;">${getNotifIcon(n.notification_type)}</span>
+                            <span style="display:inline-flex;align-items:center;">${getNotifIcon(n.notification_type)}</span>
                             <strong style="font-size: 14px;">${n.title}</strong>
                             ${!n.is_read ? '<span class="badge badge-primary" style="font-size: 10px;">NEW</span>' : ''}
                         </div>
@@ -38,6 +39,7 @@ async function loadNotifications() {
                 </div>
             </div>
         `).join("");
+        if (window.lucide) lucide.createIcons();
     } catch (err) {
         showToast("Failed to load notifications.", "error");
     }
@@ -65,14 +67,14 @@ async function markAllRead() {
 
 function getNotifIcon(type) {
     const icons = {
-        TRANSACTION: "💸",
-        LOAN: "🏦",
-        INVESTMENT: "📈",
-        SECURITY: "🔒",
-        SYSTEM: "⚙️",
-        ALERT: "⚠️",
+        TRANSACTION: '<i data-lucide="send"></i>',
+        LOAN: '<i data-lucide="landmark"></i>',
+        INVESTMENT: '<i data-lucide="trending-up"></i>',
+        SECURITY: '<i data-lucide="shield-check"></i>',
+        SYSTEM: '<i data-lucide="settings"></i>',
+        ALERT: '<i data-lucide="alert-triangle"></i>',
     };
-    return icons[type] || "🔔";
+    return icons[type] || '<i data-lucide="bell"></i>';
 }
 
 function timeAgo(dateStr) {

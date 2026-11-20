@@ -256,3 +256,29 @@ a:hover {
 .hidden {
     display: none !important;
 }
+
+/* Lucide Icons support */
+i[data-lucide], svg.lucide {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    stroke-width: 2px;
+}
+.sidebar-nav i[data-lucide], .sidebar-nav svg.lucide {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.btn i[data-lucide], .btn svg.lucide {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+.metric-icon i[data-lucide], .metric-icon svg.lucide {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.2px;
+}

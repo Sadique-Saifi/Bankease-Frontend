@@ -87,6 +87,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
     <header class="landing-header">
@@ -114,22 +115,22 @@
 
     <section class="features-grid">
         <div class="feature-card">
-            <div class="feature-icon">⚡</div>
+            <div class="feature-icon"><i data-lucide="zap"></i></div>
             <h3>Atomic Fund Transfers</h3>
             <p style="color: var(--text-secondary); margin-top: 8px;">Double-entry ledger with database row-level locking for zero partial updates and immediate settlement.</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🛡️</div>
+            <div class="feature-icon"><i data-lucide="shield-check"></i></div>
             <h3>Role-Based Access</h3>
             <p style="color: var(--text-secondary); margin-top: 8px;">Distinct Customer self-service dashboard and Bank Officer management console with audit logging.</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">💡</div>
+            <div class="feature-icon"><i data-lucide="lightbulb"></i></div>
             <h3>Utility Bill Payments</h3>
             <p style="color: var(--text-secondary); margin-top: 8px;">Instant utility billing integration covering Electricity, Water, Gas, Internet, and DTH providers.</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">📈</div>
+            <div class="feature-icon"><i data-lucide="trending-up"></i></div>
             <h3>Loans & Investments</h3>
             <p style="color: var(--text-secondary); margin-top: 8px;">End-to-end loan application review with automated EMI schedules and simulated portfolio holdings.</p>
         </div>
@@ -138,5 +139,6 @@
     <footer style="text-align: center; padding: 32px; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border);">
         BankEase Net Banking Application • Project Code: P18 • MCA Academic Full-Stack Project
     </footer>
+    <script>if (window.lucide) lucide.createIcons();</script>
 </body>
 </html>
